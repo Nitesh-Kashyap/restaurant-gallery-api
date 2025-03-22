@@ -1,0 +1,112 @@
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-03-22 10:34:29.291166', '2025-03-22 10:34:29.291169') RETURNING "key" /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+Migrating to CreateRestaurants (20250322103421)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='RestaurantApp'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250322103421') RETURNING "version" /*application='RestaurantApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+Started GET "/restaurants" for ::1 at 2025-03-22 16:08:12 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+Processing by RestaurantsController#index as */*
+Completed 204 No Content in 15ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.7ms)
+
+
+Started POST "/restaurants" for ::1 at 2025-03-22 16:12:19 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+Processing by RestaurantsController#create as */*
+  Parameters: {"restaurant"=>{"name"=>"The Spice Hub", "description"=>"A fine dining experience with authentic Indian cuisine."}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='RestaurantApp',controller='restaurants'*/[0m
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[36mRestaurant Create (3.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "description", "created_at", "updated_at") VALUES ('The Spice Hub', 'A fine dining experience with authentic Indian cuisine.', '2025-03-22 10:42:19.423486', '2025-03-22 10:42:19.423486') RETURNING "id" /*action='create',application='RestaurantApp',controller='restaurants'*/[0m
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='RestaurantApp',controller='restaurants'*/[0m
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+Completed 201 Created in 41ms (Views: 0.3ms | ActiveRecord: 7.3ms (1 query, 0 cached) | GC: 26.2ms)
+
+
+Started GET "/restaurants" for ::1 at 2025-03-22 16:12:31 +0530
+Processing by RestaurantsController#index as */*
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" /*action='index',application='RestaurantApp',controller='restaurants'*/[0m
+  ↳ app/controllers/restaurants_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+Migrating to CreateGalleries (20250322105841)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='RestaurantApp'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "galleries" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "restaurant_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_95973a9133"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+) /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_galleries_on_restaurant_id" ON "galleries" ("restaurant_id") /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250322105841') RETURNING "version" /*application='RestaurantApp'*/[0m
+  [1m[36mTRANSACTION (13.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='RestaurantApp'*/[0m
+Migrating to CreateActiveStorageTables (20250322105920)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='RestaurantApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar, "created_at" datetime(6) NOT NULL) /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key") /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+) /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id") /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id") /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+) /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest") /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250322105920') RETURNING "version" /*application='RestaurantApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."id" DESC LIMIT 1 /*application='RestaurantApp'*/[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."id" DESC LIMIT 1 /*application='RestaurantApp'*/[0m
+  [1m[36mGallery Load (0.1ms)[0m  [1m[34mSELECT "galleries".* FROM "galleries" WHERE "galleries"."restaurant_id" = 1 /* loading for pp */ LIMIT 11 /*application='RestaurantApp'*/[0m
+  [1m[36mGallery Load (0.2ms)[0m  [1m[34mSELECT "galleries".* FROM "galleries" ORDER BY "galleries"."id" DESC LIMIT 1 /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+Migrating to CreateMenus (20250322114530)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='RestaurantApp'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "menus" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "restaurant_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_4d07a806b1"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+) /*application='RestaurantApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_menus_on_restaurant_id" ON "menus" ("restaurant_id") /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250322114530') RETURNING "version" /*application='RestaurantApp'*/[0m
+  [1m[36mTRANSACTION (40.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='RestaurantApp'*/[0m
+Migrating to CreateDishes (20250322114531)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='RestaurantApp'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" decimal, "menu_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_350d53293f"
+FOREIGN KEY ("menu_id")
+  REFERENCES "menus" ("id")
+) /*application='RestaurantApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_dishes_on_menu_id" ON "dishes" ("menu_id") /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250322114531') RETURNING "version" /*application='RestaurantApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='RestaurantApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+Started POST "/restaurants/1/galleries" for ::1 at 2025-03-22 17:22:11 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='RestaurantApp'*/[0m
+Processing by GalleriesController#create as */*
+  Parameters: {"id"=>1, "name"=>"Summer Special", "description"=>"A beautiful summer-themed gallery", "image_urls"=>["/rails/active_storage/blobs/123abc/image1.jpg", "/rails/active_storage/blobs/456def/image2.jpg"], "restaurant_id"=>"1", "gallery"=>{"id"=>1, "name"=>"Summer Special", "description"=>"A beautiful summer-themed gallery"}}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = 1 LIMIT 1 /*action='create',application='RestaurantApp',controller='galleries'*/[0m
+  ↳ app/controllers/galleries_controller.rb:42:in `set_restaurant'
+[31mUnpermitted parameter: :id. Context: { controller: GalleriesController, action: create, request: #<ActionDispatch::Request:0x00007f0b08af08d8>, params: {"id"=>1, "name"=>"Summer Special", "description"=>"A beautiful summer-themed gallery", "image_urls"=>["/rails/active_storage/blobs/123abc/image1.jpg", "/rails/active_storage/blobs/456def/image2.jpg"], "controller"=>"galleries", "action"=>"create", "restaurant_id"=>"1", "gallery"=>{"id"=>1, "name"=>"Summer Special", "description"=>"A beautiful summer-themed gallery"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='RestaurantApp',controller='galleries'*/[0m
+  ↳ app/controllers/galleries_controller.rb:16:in `create'
+  [1m[36mGallery Create (0.7ms)[0m  [1m[32mINSERT INTO "galleries" ("name", "description", "restaurant_id", "created_at", "updated_at") VALUES ('Summer Special', 'A beautiful summer-themed gallery', 1, '2025-03-22 11:52:11.143202', '2025-03-22 11:52:11.143202') RETURNING "id" /*action='create',application='RestaurantApp',controller='galleries'*/[0m
+  ↳ app/controllers/galleries_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='RestaurantApp',controller='galleries'*/[0m
+  ↳ app/controllers/galleries_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Attachment Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'Gallery' AND "active_storage_attachments"."name" = 'images' LIMIT 1 /*action='create',application='RestaurantApp',controller='galleries'*/[0m
+  ↳ app/models/gallery.rb:8:in `image_urls'
+Completed 201 Created in 33ms (Views: 0.2ms | ActiveRecord: 6.6ms (3 queries, 0 cached) | GC: 6.5ms)
+
+
